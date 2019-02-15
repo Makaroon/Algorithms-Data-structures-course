@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Alexander/Downloads/ADS 2019/HW 4/WinterFun/ReadWriter.h
+iostream
+-
+fstream
+-
+Student_and_Ski.h
+C:/Users/Alexander/Downloads/ADS 2019/HW 4/WinterFun/Student_and_Ski.h
+
+C:/Users/Alexander/Downloads/ADS 2019/HW 4/WinterFun/Student_and_Ski.h
+
+C:/Users/Alexander/Downloads/ADS 2019/HW 4/WinterFun/main.cpp
+ReadWriter.h
+C:/Users/Alexander/Downloads/ADS 2019/HW 4/WinterFun/ReadWriter.h
+

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Alexander/Downloads/ADS 2 sem/Sort radix/ReadWriter.h
+iostream
+-
+fstream
+-
+
+C:/Users/Alexander/Downloads/ADS 2 sem/Sort radix/main.cpp
+ReadWriter.h
+C:/Users/Alexander/Downloads/ADS 2 sem/Sort radix/ReadWriter.h
+

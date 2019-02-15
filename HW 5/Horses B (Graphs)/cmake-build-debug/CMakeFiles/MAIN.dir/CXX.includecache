@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Alexander/Downloads/ADS 2019/HW 5/Horses B (Graphs)/Node.h
+string
+-
+vector
+-
+
+C:/Users/Alexander/Downloads/ADS 2019/HW 5/Horses B (Graphs)/ReadWriter.cpp
+fstream
+-
+exception
+-
+Node.h
+C:/Users/Alexander/Downloads/ADS 2019/HW 5/Horses B (Graphs)/Node.h
+
+C:/Users/Alexander/Downloads/ADS 2019/HW 5/Horses B (Graphs)/main.cpp
+ReadWriter.cpp
+C:/Users/Alexander/Downloads/ADS 2019/HW 5/Horses B (Graphs)/ReadWriter.cpp
+queue
+-
+algorithm
+-
+

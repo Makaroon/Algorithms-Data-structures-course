@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Alexander/Downloads/ADS 2019/HW 1/Count sort/ReadWriter.h
+iostream
+-
+fstream
+-
+
+C:/Users/Alexander/Downloads/ADS 2019/HW 1/Count sort/main.cpp
+ReadWriter.h
+C:/Users/Alexander/Downloads/ADS 2019/HW 1/Count sort/ReadWriter.h
+

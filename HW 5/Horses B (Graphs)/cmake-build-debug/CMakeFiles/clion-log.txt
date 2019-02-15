@@ -1,0 +1,4 @@
+"C:\Program Files\JetBrains\CLion 2018.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=C:/MinGW/mingw64/bin/g++.exe -G "CodeBlocks - MinGW Makefiles" "C:\Users\Alexander\Downloads\ADS 2019\HW 5\Horses B (Graphs)"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Alexander/Downloads/ADS 2019/HW 5/Horses B (Graphs)/cmake-build-debug

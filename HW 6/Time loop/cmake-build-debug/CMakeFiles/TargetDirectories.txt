@@ -1,0 +1,3 @@
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 6/Time loop/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 6/Time loop/cmake-build-debug/CMakeFiles/MAIN.dir
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 6/Time loop/cmake-build-debug/CMakeFiles/rebuild_cache.dir

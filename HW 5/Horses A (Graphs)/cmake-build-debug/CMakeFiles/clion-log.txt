@@ -1,0 +1,29 @@
+"C:\Program Files\JetBrains\CLion 2018.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=C:/MinGW/mingw64/bin/g++.exe -G "CodeBlocks - MinGW Makefiles" "C:\Users\Alexander\Downloads\ADS 2019\Algorithms-Data-structures-course\HW 5\Horses A (Graphs)"
+-- The C compiler identification is GNU 8.1.0
+-- The CXX compiler identification is GNU 8.1.0
+-- Check for working C compiler: C:/MinGW/mingw64/bin/gcc.exe
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+-- Check for working C compiler: C:/MinGW/mingw64/bin/gcc.exe -- works
+-- Detecting C compiler ABI info
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+-- Detecting C compile features - done
+-- Check for working CXX compiler: C:/MinGW/mingw64/bin/g++.exe
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+-- Check for working CXX compiler: C:/MinGW/mingw64/bin/g++.exe -- works
+-- Detecting CXX compiler ABI info
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+CMake Error: Remove failed on file: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_724af.dir/link.txt: System Error: No such file or directory
+-- Detecting CXX compile features - done
+-- Configuring incomplete, errors occurred!
+See also "C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 5/Horses A (Graphs)/cmake-build-debug/CMakeFiles/CMakeOutput.log".

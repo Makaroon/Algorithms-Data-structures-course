@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 6/Getting dressed/main.cpp
+iostream
+-
+fstream
+-
+string
+-
+vector
+-
+stack
+-
+set
+-
+stdlib.h
+-
+algorithm
+-
+

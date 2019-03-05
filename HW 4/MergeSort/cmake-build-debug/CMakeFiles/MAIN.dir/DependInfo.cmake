@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Alexander/Downloads/ADS 2019/HW 4/MergeSort/main.cpp" "C:/Users/Alexander/Downloads/ADS 2019/HW 4/MergeSort/cmake-build-debug/CMakeFiles/MAIN.dir/main.cpp.obj"
+  "C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 4/MergeSort/main.cpp" "C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 4/MergeSort/cmake-build-debug/CMakeFiles/MAIN.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

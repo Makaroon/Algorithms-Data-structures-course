@@ -5,14 +5,14 @@
 //Можно добавлять любые методы для решения задачи.
 
 //Задача - реализовать данный метод, решение должно быть в переменной result
-void solve(std::vector<Node>& graph, int start, std::vector<std::string>& result)
+void solve(std::vector <Node>& graph, int start, std::vector <std::string>& result)
 {
     //TODO
     result.push_back(graph[start].name);
     graph[start].visited = true;
-    std::queue<Node*> temp;
-    std::vector<Node*> unsortedCh;
-    std::vector<std::string> unsChS;
+    std::queue < Node * > temp;
+    std::vector < Node * > unsortedCh;
+    std::vector <std::string> unsChS;
 
     Node* curNode = &graph[start];
     temp.push(curNode);
@@ -54,8 +54,8 @@ void solve(std::vector<Node>& graph, int start, std::vector<std::string>& result
 
 int main()
 {
-    std::vector<Node> graph;
-    std::vector<std::string> result;
+    std::vector <Node> graph;
+    std::vector <std::string> result;
     int start;
 
     ReadWriter rw;

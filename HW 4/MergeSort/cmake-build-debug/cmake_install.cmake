@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Alexander/Downloads/ADS 2019/HW 4/MergeSort
+# Install script for directory: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 4/MergeSort
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Alexander/Downloads/ADS 2019/HW 4/MergeSort/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 4/MergeSort/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

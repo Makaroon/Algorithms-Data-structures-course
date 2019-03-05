@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2018.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=C:/MinGW/mingw64/bin/g++.exe -G "CodeBlocks - MinGW Makefiles" "C:\Users\Alexander\Downloads\ADS 2019\HW 4\MergeSort"
+"C:\Program Files\JetBrains\CLion 2018.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=C:/MinGW/mingw64/bin/g++.exe -G "CodeBlocks - MinGW Makefiles" "C:\Users\Alexander\Downloads\ADS 2019\Algorithms-Data-structures-course\HW 4\MergeSort"
 -- The C compiler identification is GNU 8.1.0
 -- The CXX compiler identification is GNU 8.1.0
 -- Check for working C compiler: C:/MinGW/mingw64/bin/gcc.exe
@@ -15,4 +15,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Alexander/Downloads/ADS 2019/HW 4/MergeSort/cmake-build-debug
+-- Build files have been written to: C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 4/MergeSort/cmake-build-debug

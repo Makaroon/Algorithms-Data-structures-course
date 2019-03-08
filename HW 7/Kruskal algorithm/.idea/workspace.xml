@@ -12,14 +12,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3728c609-e53d-4974-9b9e-3b6871f22c9d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../HW 5/Horses A (Graphs)/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../HW 5/Horses A (Graphs)/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Prim algorithm/cmake-build-debug/input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../HW 5/Horses B (Graphs)/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../HW 5/Horses B (Graphs)/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Boruvka algorithm/Boruvka/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Boruvka algorithm/Boruvka/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/MAIN.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/MAIN.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Prim algorithm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Prim algorithm/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Prim algorithm/cmake-build-debug/CMakeFiles/MAIN.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../Prim algorithm/cmake-build-debug/CMakeFiles/MAIN.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Prim algorithm/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Prim algorithm/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,14 +55,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cpp" value="482" />
-          <entry key="txt" value="22" />
+          <entry key="txt" value="47" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="8" />
           <entry key="ObjectiveC" value="482" />
-          <entry key="PLAIN_TEXT" value="14" />
+          <entry key="PLAIN_TEXT" value="39" />
         </counts>
       </usages-collector>
     </session>
@@ -73,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="340">
+              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
             </state>
           </provider>
         </entry>
@@ -120,7 +119,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="170" />
     <option name="y" value="325" />
     <option name="width" value="1750" />
@@ -199,7 +198,7 @@
       <option name="presentableId" value="Default" />
       <updated>1551812991317</updated>
       <workItem from="1551812993526" duration="1088000" />
-      <workItem from="1551964116090" duration="1728000" />
+      <workItem from="1551964116090" duration="2938000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1551813127116</created>
@@ -208,14 +207,21 @@
       <option name="project" value="LOCAL" />
       <updated>1551813127116</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="kruskal algo">
+      <created>1551966718263</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1551966718263</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2816000" />
+    <option name="totallyTimeSpent" value="4026000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22818792" />
@@ -248,7 +254,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="kruskal algo" />
+    <option name="LAST_COMMIT_MESSAGE" value="kruskal algo" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
@@ -277,8 +284,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="340">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>

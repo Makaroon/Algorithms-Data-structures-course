@@ -12,14 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93e3422e-83f6-421c-9081-cbe880f996c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../HW 7/Kruskal algorithm/cmake-build-debug/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Horses A (Graphs)/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Horses A (Graphs)/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../HW 7/Boruvka algorithm/Boruvka/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../HW 7/Boruvka algorithm/Boruvka/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../HW 7/Kruskal algorithm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../HW 7/Kruskal algorithm/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../HW 7/Kruskal algorithm/cmake-build-debug/CMakeFiles/MAIN.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../HW 7/Kruskal algorithm/cmake-build-debug/CMakeFiles/MAIN.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../HW 7/Kruskal algorithm/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../HW 7/Kruskal algorithm/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../HW 7/Prim algorithm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../HW 7/Prim algorithm/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HW 7/Prim algorithm/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../HW 7/Prim algorithm/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,7 +63,7 @@
     <session id="452973355">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.opened" value="2" />
         </counts>
@@ -150,7 +145,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="170" />
     <option name="y" value="325" />
     <option name="width" value="1750" />
@@ -236,7 +231,7 @@
     <option name="totallyTimeSpent" value="6370000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />

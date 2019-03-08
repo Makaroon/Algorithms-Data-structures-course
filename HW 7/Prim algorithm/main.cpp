@@ -16,6 +16,38 @@ void solve(int N, int M, vector<Edge>& edges, vector<Edge>& result)
     //Можно использовать любые другие структуры, но затем скопировать ответ в структуру Edge для записи результата в файл.
     //Также можно добавить любые необходимые компараторы для предложенного класса Edge, так как все методы и поля публичные.
 
+    vector<vector<int>> graph(N);
+    for (int i = 0; i < M; ++i)
+    {
+        graph[edges[i].A].emplace_back(i);
+        graph[edges[i].B].emplace_back(i);
+    }
+    const int INF = 1000000000; // значение "бесконечность"
+
+// алгоритм
+    vector<bool> used (N);
+    vector<int> min_e (N, INF), sel_e (N, -1);
+    min_e[0] = 0;
+    for (int i=0; i<N; ++i) {
+        int v = -1;
+        for (int j=0; j<N; ++j)
+            if (!used[j] && (v == -1 || min_e[j] < min_e[v]))
+                v = j;
+        if (min_e[v] == INF) {
+            cout << "No MST!";
+            exit(0);
+        }
+
+        used[v] = true;
+            if (sel_e[v] != -1)
+
+
+        for (int to=0; to<N; ++to)
+            if (graph[v][to] < min_e[to]) {
+                min_e[to] = graph[v][to];
+                sel_e[to] = v;
+            }
+    }
 }
 
 int main()

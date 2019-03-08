@@ -28,7 +28,7 @@ void solve(int N, int M, vector<Edge>& edges, vector<Edge>& result)
         comp[i] = i;
     for (int j = 0; j < M; ++j)
     {
-        int a = edges[j].A, b = edges[j].B, w = edges[j].W;
+        int a = edges[j].A, b = edges[j].B;
         if (comp[a] != comp[b])
         {
             c++;

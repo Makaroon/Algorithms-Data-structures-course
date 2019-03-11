@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 7/Kruskal algorithm/Edge.h
+string
+-
+
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 7/Kruskal algorithm/ReadWriter.h
+Edge.h
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 7/Kruskal algorithm/Edge.h
+iostream
+-
+fstream
+-
+vector
+-
+algorithm
+-
+
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 7/Kruskal algorithm/main.cpp
+ReadWriter.h
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 7/Kruskal algorithm/ReadWriter.h
+

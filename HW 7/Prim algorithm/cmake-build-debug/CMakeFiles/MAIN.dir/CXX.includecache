@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 7/Prim algorithm/Edge.h
+string
+-
+
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 7/Prim algorithm/ReadWriter.h
+Edge.h
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 7/Prim algorithm/Edge.h
+iostream
+-
+fstream
+-
+vector
+-
+algorithm
+-
+
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 7/Prim algorithm/main.cpp
+ReadWriter.h
+C:/Users/Alexander/Downloads/ADS 2019/Algorithms-Data-structures-course/HW 7/Prim algorithm/ReadWriter.h
+

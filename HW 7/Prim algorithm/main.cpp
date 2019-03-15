@@ -1,4 +1,5 @@
 ﻿#include "ReadWriter.h"
+#include <set>
 //string, fstream, iostream, vector, algorithm, Edge.h - included in ReadWriter.h
 
 //Можно создавать любые классы и методы для решения задачи
@@ -22,31 +23,38 @@ void solve(int N, int M, vector<Edge>& edges, vector<Edge>& result)
         graph[edges[i].A].emplace_back(i);
         graph[edges[i].B].emplace_back(i);
     }
-    const int INF = 1000000000; // значение "бесконечность"
 
-// алгоритм
-    vector<bool> used (N);
-    vector<int> min_e (N, INF), sel_e (N, -1);
-    min_e[0] = 0;
-    for (int i=0; i<N; ++i) {
-        int v = -1;
-        for (int j=0; j<N; ++j)
-            if (!used[j] && (v == -1 || min_e[j] < min_e[v]))
-                v = j;
-        if (min_e[v] == INF) {
-            cout << "No MST!";
-            exit(0);
+    vector<int> min(N, -1);
+    min[0] = -2;
+    set<pair<int, int>> connections;
+    connections.insert(make_pair(0, 0));
+    for (int i = 0; i < N; ++i)
+    {
+        if (connections.empty())
+            return;
+
+        int point = connections.begin()->second;
+        connections.erase(connections.begin());
+        if (min[point] >= 0)
+        {
+            result.emplace_back(edges[min[point]]);
+            min[point] = -2;
         }
 
-        used[v] = true;
-            if (sel_e[v] != -1)
-
-
-        for (int to=0; to<N; ++to)
-            if (graph[v][to] < min_e[to]) {
-                min_e[to] = graph[v][to];
-                sel_e[to] = v;
+        for (int j : graph[point])
+        {
+            int dest;
+            Edge e = edges[j];
+            if (point == e.A)
+                dest = e.B;
+            else dest = e.A;
+            if ((min[dest] >= 0 && e.W < edges[min[dest]].W) || min[dest] == -1)
+            {
+                connections.erase(make_pair(edges[min[dest]].W, dest));
+                min[dest] = e.number;
+                connections.insert(make_pair(e.W, dest));
             }
+        }
     }
 }
 

@@ -9,16 +9,15 @@ using namespace std;
 //определенный в классе ReadWriter.
 //Можно прямо сюда закинуть матрицу, и потом вычислять какие значения записывать в файл,
 //или сначала сформировать вывод в каком-то вспомогательном методе и затем здесь только отправлять в файл.
-    void ReadWriter::writeValues(std::vector<std::vector<int>> result)
-    {
-        if (!fout.is_open())
-            throw std::ios_base::failure("file not open");
+void ReadWriter::writeValues(std::vector<std::vector<int>> result)
+{
+    if (!fout.is_open())
+        throw std::ios_base::failure("file not open");
 
-		//Для записи в файл используйте конструкции:
-		//fout << value1 << value2 << value3;
+    //Для записи в файл используйте конструкции:
+    //fout << value1 << value2 << value3;
+}
 
-    }
-	
 
 //Основной метод решения задачи, параметры:
 //N - количество вершин, M - количество ребер в графе
@@ -27,8 +26,32 @@ using namespace std;
 //передается по ссылке (&), чтобы не копировать, изменять вектор и его значения можно.
 void solve(int N, int M, vector<Edge>& edges, vector<vector<int>>& matrix)
 {
-
-
+    matrix=vector<vector<int>>(N, vector<int>(N));
+    vector<vector<int>> D(N, vector<int>(N));
+    vector<vector<int>> P(N, vector<int>(N));
+    for (int i = 0; i < N; ++i)
+        for (int j = 0; j < N; ++j)
+        {
+            P[i][j] = INT_MAX;
+            if (i != j)
+                D[i][j] = INT_MAX;
+        }
+    for (int i = 0; i < edges.size(); ++i)
+    {
+        D[edges[i].A][edges[i].B] = edges[i].W;
+        P[edges[i].A][edges[i].B] = edges[i].A;
+    }
+    for (int k = 0; k < N; ++k)
+        for (int i = 0; i < N; ++i)
+            for (int j = 0; j < N; ++j)
+            {
+                if (D[i][j] > D[i][k] + D[k][j])
+                {
+                    D[i][j] = D[i][k] + D[k][j];
+                    P[i][j] = P[k][j];
+                }
+            }
+    matrix=D;
 }
 
 int main()
@@ -49,8 +72,8 @@ int main()
 
     //Алгоритм решения задачи
     solve(N, M, edges, result);
-	//Здесь можно вызвать ещё какой-то метод, если вам требуется.
-	
+    //Здесь можно вызвать ещё какой-то метод, если вам требуется.
+
     rw.writeValues(result);
 
     return 0;

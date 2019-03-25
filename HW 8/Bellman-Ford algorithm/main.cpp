@@ -23,6 +23,8 @@ void relax(vector<int>& d, vector<int>& p, int v, int u, int path)
 void solve(int N, int M, vector<Edge>& edges, vector<int>& result)
 {
     //Советую разделить решение на логические блоки
+
+    //initialization
     vector<int> d(N);
     vector<int> p(N);
     for (int i = 0; i < N; ++i)
@@ -31,6 +33,8 @@ void solve(int N, int M, vector<Edge>& edges, vector<int>& result)
         p[i] = -1;
     }
     d[0] = 0;
+
+    //Bellman-Ford
     for (int i = 0; i < N - 1; ++i)
         for (int j = 0; j < M; ++j)
             relax(d, p, edges[j].B, edges[j].A, edges[j].W);

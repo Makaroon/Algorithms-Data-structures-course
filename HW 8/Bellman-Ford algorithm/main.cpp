@@ -22,8 +22,6 @@ void relax(vector<int>& d, vector<int>& p, int v, int u, int path)
 //Результат также в виде вектора кратчайших расстояний из 0-й вершины во все остальные начиная с 1-й, то есть N-1 значение должно быть
 void solve(int N, int M, vector<Edge>& edges, vector<int>& result)
 {
-    //Советую разделить решение на логические блоки
-
     //initialization
     vector<int> d(N);
     vector<int> p(N);
@@ -41,6 +39,9 @@ void solve(int N, int M, vector<Edge>& edges, vector<int>& result)
 
     for (int i = 1; i < N; ++i)
         result.push_back(d[i]);
+
+    d.clear();
+    p.clear();
 }
 
 int main()

@@ -5,9 +5,13 @@
 
 using namespace std;
 
-void relax(int N, int M, vector<Edge>& edges, vector<int>& result)
+void relax(vector<int>& d, vector<int>& p, int v, int u, int path)
 {
-    
+    if (d[v] > d[u] + path)
+    {
+        d[v] = d[u] + path;
+        p[v] = u;
+    }
 }
 
 //Основной метод решения задачи, параметры:
@@ -19,7 +23,20 @@ void relax(int N, int M, vector<Edge>& edges, vector<int>& result)
 void solve(int N, int M, vector<Edge>& edges, vector<int>& result)
 {
     //Советую разделить решение на логические блоки
+    vector<int> d(N);
+    vector<int> p(N);
+    for (int i = 0; i < N; ++i)
+    {
+        d[i] = 30001;
+        p[i] = -1;
+    }
+    d[0] = 0;
+    for (int i = 0; i < N - 1; ++i)
+        for (int j = 0; j < M; ++j)
+            relax(d, p, edges[j].B, edges[j].A, edges[j].W);
 
+    for (int i = 1; i < N; ++i)
+        result.push_back(d[i]);
 }
 
 int main()

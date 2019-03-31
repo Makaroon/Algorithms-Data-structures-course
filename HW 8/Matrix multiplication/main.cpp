@@ -36,25 +36,32 @@ void solve(int N, int M, vector<Edge>& edges, vector<vector<int>>& result)
 {
     ///initialization
     vector<vector<int>> w(N, vector<int>(N));
+    int zeroA = 0, zeroB = 0;
     for (int i = 0; i < edges.size(); ++i)
+    {
         w[edges[i].A][edges[i].B] = edges[i].W;
+        if (edges[i].W == 0)
+        {
+            zeroA = edges[i].A;
+            zeroB = edges[i].B;
+        }
+    }
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < N; ++j)
         {
             if (w[i][j] == 0 && i != j)
                 w[i][j] = 130001;
         }
+    w[zeroA][zeroB] = 0;
 
     vector<vector<int>> l = w;
-    for (int i = 1; i < N - 1; ++i)
+    for (int i = 0; i < N - 2; ++i)
         l = extendShortestPath(l, w);
 
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < N; ++j)
             if (l[i][j] == 130001)
                 l[i][j] = -1;
-
-
     result = l;
 }
 

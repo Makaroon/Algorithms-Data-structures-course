@@ -4,21 +4,58 @@
 #include <climits>
 
 using namespace std;
-	    // write all values
-    void ReadWriter::writeValues(std::vector<std::vector<int>>& result)
-    {
-        if (!fout.is_open())
-            throw std::ios_base::failure("file not open");
 
-		//Можно сюда передать матрицу и здесь вычислять какие значения выводить в файл.
-		//Можно заранее сформировать ответ и здесь его просто выводить построчно. Как вам удобнее.
-		//Работать с файлом вот так: 
-		//fout<< value1 << value2 << value3;
-    }
+// write all values
+void ReadWriter::writeValues(std::vector<std::vector<int>>& result)
+{
+    if (!fout.is_open())
+        throw std::ios_base::failure("file not open");
 
+    for (int i = 0; i < result[0].size(); ++i)
+        for (int j = 0; j < result[0].size(); ++j)
+            if (i != j)
+                fout << i << " " << j << " " << result[i][j] << '\n';
+}
+
+vector<vector<int>> extendShortestPath(vector<vector<int>>& l, vector<vector<int>>& w)
+{
+    int N = static_cast<int>(l.size());
+    vector<vector<int>> newL(N, vector<int>(N));
+    for (int i = 0; i < N; ++i)
+        for (int j = 0; j < N; ++j)
+        {
+            newL[i][j] = 130001;
+            for (int k = 0; k < N; ++k)
+                newL[i][j] = min(newL[i][j], l[i][k] + w[k][j]);
+        }
+    return newL;
+}
+
+///O(|V|^4) realization
 void solve(int N, int M, vector<Edge>& edges, vector<vector<int>>& result)
 {
+    ///initialization
+    vector<vector<int>> w(N, vector<int>(N));
+    for (int i = 0; i < edges.size(); ++i)
+        w[edges[i].A][edges[i].B] = edges[i].W;
+    for (int i = 0; i < N; ++i)
+        for (int j = 0; j < N; ++j)
+        {
+            if (w[i][j] == 0 && i != j)
+                w[i][j] = 130001;
+        }
 
+    vector<vector<int>> l = w;
+    for (int i = 1; i < N - 1; ++i)
+        l = extendShortestPath(l, w);
+
+    for (int i = 0; i < N; ++i)
+        for (int j = 0; j < N; ++j)
+            if (l[i][j] == 130001)
+                l[i][j] = -1;
+
+
+    result = l;
 }
 
 int main()

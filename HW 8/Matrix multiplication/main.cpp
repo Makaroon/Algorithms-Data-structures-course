@@ -31,32 +31,27 @@ vector<vector<int>> extendShortestPath(vector<vector<int>>& l, vector<vector<int
     return newL;
 }
 
-///O(|V|^4) realization
+///O(|V|^3 * lg|V|) realization
 void solve(int N, int M, vector<Edge>& edges, vector<vector<int>>& result)
 {
     ///initialization
     vector<vector<int>> w(N, vector<int>(N));
-    int zeroA = 0, zeroB = 0;
-    for (int i = 0; i < edges.size(); ++i)
-    {
-        w[edges[i].A][edges[i].B] = edges[i].W;
-        if (edges[i].W == 0)
-        {
-            zeroA = edges[i].A;
-            zeroB = edges[i].B;
-        }
-    }
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < N; ++j)
         {
-            if (w[i][j] == 0 && i != j)
+            if (i != j)
                 w[i][j] = 130001;
         }
-    w[zeroA][zeroB] = 0;
+    for (int i = 0; i < edges.size(); ++i)
+        w[edges[i].A][edges[i].B] = edges[i].W;
 
     vector<vector<int>> l = w;
-    for (int i = 0; i < N - 2; ++i)
-        l = extendShortestPath(l, w);
+    int i = 1;
+    while (i < N - 2)
+    {
+        l = extendShortestPath(l, l);
+        i *= 2;
+    }
 
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < N; ++j)

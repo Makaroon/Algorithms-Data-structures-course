@@ -37,6 +37,10 @@ void solve(int N, int M, vector<Edge>& edges, vector<int>& result)
         for (int j = 0; j < M; ++j)
             relax(d, p, edges[j].B, edges[j].A, edges[j].W);
 
+    for (int i = 0; i < M; ++i)
+        if (d[edges[i].B] > d[edges[i].A] + edges[i].W)
+            return;
+
     for (int i = 1; i < N; ++i)
         result.push_back(d[i]);
 
@@ -64,8 +68,11 @@ int main()
     solve(N, M, edges, result);
 
     //Выводим результаты
-    rw.writeInt(result.size());
-    rw.writeIntValues(result);
+    if (!result.empty())
+    {
+        rw.writeInt(result.size());
+        rw.writeIntValues(result);
+    }
 
     return 0;
 }

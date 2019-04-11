@@ -1,6 +1,8 @@
 #include <iostream>
 #include <queue>
 #include<ctime>
+#include <chrono>
+#include <memory.h>
 #include "ReadWriter.h"
 
 /// КДЗ по дисциплине Алгоритмы и структуры данных, 2018-2019 уч.год
@@ -10,6 +12,7 @@
 
 
 using namespace std;
+const int INF = 1000000000; // константа-бесконечность
 
 int findFirst(vector<vector<int>>& x)
 {
@@ -41,7 +44,63 @@ int findLast(vector<vector<int>>& x)
     return -1;
 }
 
-bool bfs(vector<vector<int>> r, int a, int b, int parent[])
+bool find_path(size_t V, vector<vector<int>>& rGraph, int cur, int t, vector<int>& parent, vector<bool>& visited)
+{
+    visited[cur] = true;
+
+    for (int i = 0; i < V; ++i)
+    {
+        if (!visited[i] && rGraph[cur][i] > 0)
+        {
+            parent[i] = cur;
+            bool found = find_path(V, rGraph, i, t, parent, visited);
+            if (found)
+                return true;
+        }
+    }
+
+    return visited[t];
+}
+
+int solveFordFulkerson(size_t V, vector<vector<int >>& graph, int s, int t)
+{
+    int u, v;
+
+    vector<vector<int>> rGraph = graph;
+
+    vector<int> parent(V);
+    parent[s] = -1;
+    int max_flow = 0;
+
+    vector<bool> visited;
+    visited.assign(V, 0);
+
+    while (find_path(V, rGraph, s, t, parent, visited))
+    {
+        int path_flow = INT_MAX;
+        for (v = t; v != s; v = parent[v])
+        {
+            u = parent[v];
+            path_flow = min(path_flow, rGraph[u][v]);
+        }
+
+        for (v = t; v != s; v = parent[v])
+        {
+            u = parent[v];
+            rGraph[u][v] -= path_flow;
+            rGraph[v][u] += path_flow;
+        }
+        max_flow += path_flow;
+        for (int i = 0; i < V; ++i)
+        {
+            visited[i] = false;
+        }
+    }
+
+    return max_flow;
+}
+
+bool bfsEK(vector<vector<int>> r, int a, int b, int parent[])
 {
     // Create a visited array and mark all vertices as not visited
     bool visited[r.size()];
@@ -76,34 +135,28 @@ bool bfs(vector<vector<int>> r, int a, int b, int parent[])
     return visited[b];
 }
 
-int solveFordFulkerson(vector<vector<int>> x, int a, int b)
-{
-    return 0;
-}
-
-int solveEdmondsKarp(vector<vector<int>>& x, int a, int b)
+int solveEdmondsKarp(size_t n, vector<vector<int>>& x, int a, int b)
 {
     int u, v;
 
     // Create a residual graph and fill the residual graph with
     // given capacities in the original graph as residual capacities
     // in residual graph
-    vector<vector<int>> r(x.size(), vector<int>(x.size())); // Residual graph where rGraph[i][j] indicates
+    vector<vector<int>> r(n, vector<int>(n)); // Residual graph where rGraph[i][j] indicates
     // residual capacity of edge from i to j (if there
     // is an edge. If rGraph[i][j] is 0, then there is not)
-    for (u = 0; u < x.size(); u++)
-        for (v = 0; v < x.size(); v++)
+    for (u = 0; u < n; u++)
+        for (v = 0; v < n; v++)
             r[u][v] = x[u][v];
     // Augment the flow while tere is path from source to sink
 
     // Find minimum residual capacity of the edges along the
     // path filled by BFS. Or we can say find the maximum flow
     // through the path found.
-    int parent[x.size()];  // This array is filled by BFS and to store path
-
+    int parent[n];  // This array is filled by BFS and to store path
     int max_flow = 0;  // There is no flow initially
 
-    while (bfs(r, a, b, parent))
+    while (bfsEK(r, a, b, parent))
     {
         int path_flow = INT_MAX;
         for (v = b; v != a; v = parent[v])
@@ -127,30 +180,95 @@ int solveEdmondsKarp(vector<vector<int>>& x, int a, int b)
     return max_flow;
 }
 
-int solveDinitz(vector<vector<int>>& x, int a, int b)
+bool bfs(vector<vector<int>>& x, int n, int a, int b, int* d, int* q, vector<vector<int>>& f)
 {
+    int qh = 0, qt = 0;
+    q[qt++] = a;
+    memset(d, -1, n * sizeof d[0]);
+    d[a] = 0;
+    while (qh < qt)
+    {
+        int v = q[qh++];
+        for (int to = 0; to < n; ++to)
+            if (d[to] == -1 && f[v][to] < x[v][to])
+            {
+                q[qt++] = to;
+                d[to] = d[v] + 1;
+            }
+    }
+    return d[b] != -1;
+}
+
+int dfs(int v, int flow, int n, int b, int* ptr, int* d, vector<vector<int>>& x, vector<vector<int>>& f)
+{
+    if (!flow) return 0;
+    if (v == b) return flow;
+    for (int& to = ptr[v]; to < n; ++to)
+    {
+        if (d[to] != d[v] + 1) continue;
+        int pushed = dfs(to, min(flow, x[v][to] - f[v][to]), n, b, ptr, d, x, f);
+        if (pushed)
+        {
+            f[v][to] += pushed;
+            f[to][v] -= pushed;
+            return pushed;
+        }
+    }
     return 0;
 }
 
+int solveDinitz(size_t n, vector<vector<int>>& x, int a, int b)
+{
+    int ptr[n];
+    vector<vector<int>> f(n, vector<int>(n));
+    int d[n];
+    int q[n];
+    int flow = 0;
+    for (;;)
+    {
+        if (!bfs(x, n, a, b, d, q, f)) break;
+        memset(ptr, 0, n * sizeof ptr[0]);
+        while (int pushed = dfs(a, INF, n, b, ptr, d, x, f))
+            flow += pushed;
+    }
+    return flow;
+}
+
+
 int main()
 {
-    //Запись в матрицу
-    ReadWriter rw;
-    vector<vector<int>> x;
-    rw.read(x);
+    string names[40] = {"input_10_0.0.txt", "input_10_0.5.txt", "input_10_1.0.txt", "input_10_disco.txt",
+                        "input_310_0.0.txt", "input_310_0.5.txt", "input_310_1.0.txt", "input_310_disco.txt",
+                        "input_610_0.0.txt", "input_610_0.5.txt", "input_610_1.0.txt", "input_610_disco.txt",
+                        "input_910_0.0.txt", "input_910_0.5.txt", "input_910_1.0.txt", "input_910_disco.txt",
+                        "input_1210_0.0.txt", "input_1210_0.5.txt", "input_1210_1.0.txt", "input_1210_disco.txt",
+                        "input_1510_0.0.txt", "input_1510_0.5.txt", "input_1510_1.0.txt", "input_1510_disco.txt",
+                        "input_1810_0.0.txt", "input_1810_0.5.txt", "input_1810_1.0.txt", "input_1810_disco.txt",
+                        "input_2110_0.0.txt", "input_2110_0.5.txt", "input_2110_1.0.txt", "input_2110_disco.txt",
+                        "input_2410_0.0.txt", "input_2410_0.5.txt", "input_2410_1.0.txt", "input_2410_disco.txt",
+                        "input_2710_0.0.txt", "input_2710_0.5.txt", "input_2710_1.0.txt", "input_2710_disco.txt"};
 
-    int firstPoint = findFirst(x);
-    int lastPoint = findLast(x);
 
+    for (int i = 0; i < 40; ++i)
+    {
+        //Запись в матрицу
+        ReadWriter rw(names[i]);
+        vector<vector<int >> x;
+        rw.read(x, names[i]);
+        int firstPoint = findFirst(x);
+        int lastPoint = findLast(x);
 
-//    auto ts1 = double(clock());e: " << t1 << "\n";
+        auto timeFF = 0;
+        int res = 0;
 
+        auto beginFF = std::chrono::steady_clock::now();
+        res = solveEdmondsKarp(x.size(), x, firstPoint, lastPoint);
+        auto endFF = std::chrono::steady_clock::now();
+        auto workTimeFF = std::chrono::duration_cast<std::chrono::nanoseconds>(endFF - beginFF);
+        timeFF += workTimeFF.count();
+        cout << names[i] << " RESULT: " << res << " TIME " << timeFF << "\n";
+    }
 
-    auto ts2 = double(clock());
-    int res2 = solveEdmondsKarp(x, firstPoint, lastPoint);
-    auto te2 = double(clock());
-    double t2 = ((te2 - ts2) / CLOCKS_PER_SEC); // время в секундах
-    std::cout << "Edmonds-Karp max flow: " << res2 << "\tTime: " << t2 << "\n";
 
 //    auto ts3 = double(clock());
 

@@ -18,13 +18,13 @@ public:
         fout.close();
     }
 
-    ReadWriter()
+    ReadWriter(std::string name)
     {
-        fin.open("input.txt", std::ios::in);
+        fin.open(name, std::ios::in);
         fout.open("output.txt", std::ios::out);
     }
 
-    int read(std::vector<std::vector<int>>& x)
+    int read(std::vector<std::vector<int>>& x, std::string name)
     {
 
 //        std::string line;
@@ -44,7 +44,7 @@ public:
                 n++;
             //Опять переходим в потоке в начало файла
             fin.close();
-            fin.open("input.txt",std::ios::in);
+            fin.open(name,std::ios::in);
 
             //Теперь мы знаем сколько чисел в файле и сколько пробелов в первой строке.
             //Теперь можем считать матрицу.

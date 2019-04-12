@@ -7,13 +7,15 @@
 
 /// КДЗ по дисциплине Алгоритмы и структуры данных, 2018-2019 уч.год
 /// Ясиновский Александр Кириллович, группа БПИ-172, 01.04.2019
-// Среда разработки, состав проекта (файлы *.cpp и *.h)
-// Что сделано, а что нет
+/// IDE: CLion, Project contains of main.cpp, ReadWriter.h and input files
+/// DONE: Ford-Fulkerson, Edmonds-Karp, Dinitz algs, some minor problems w/ disconnected graphs
+/// TODO: Simplex method algorithm based on linear programming
 
 
 using namespace std;
-const int INF = 1000000000; // константа-бесконечность
+const int INF = 1000000000; ///const infinity
 
+///finding starting point
 int findFirst(vector<vector<int>>& x)
 {
     bool check;
@@ -29,6 +31,7 @@ int findFirst(vector<vector<int>>& x)
     return -1;
 }
 
+///finding end point
 int findLast(vector<vector<int>>& x)
 {
     bool check;
@@ -44,7 +47,8 @@ int findLast(vector<vector<int>>& x)
     return -1;
 }
 
-bool findPath(size_t V, vector<vector<int>>& rGraph, int cur, int t, vector<int>& parent, vector<bool>& visited)
+///DFS for Ford-Fulkerson algo
+bool FFdfs(size_t V, vector<vector<int>>& rGraph, int cur, int t, vector<int>& parent, vector<bool>& visited)
 {
     visited[cur] = true;
 
@@ -53,7 +57,7 @@ bool findPath(size_t V, vector<vector<int>>& rGraph, int cur, int t, vector<int>
         if (!visited[i] && rGraph[cur][i] > 0)
         {
             parent[i] = cur;
-            bool found = findPath(V, rGraph, i, t, parent, visited);
+            bool found = FFdfs(V, rGraph, i, t, parent, visited);
             if (found)
                 return true;
         }
@@ -62,6 +66,8 @@ bool findPath(size_t V, vector<vector<int>>& rGraph, int cur, int t, vector<int>
     return visited[t];
 }
 
+/// Ford-Fulkerson algorithm
+/// Realization inspired by Cormen - Introduction to algorithms
 int solveFordFulkerson(size_t n, vector<vector<int >> x, int s, int t)
 {
     int u, v;
@@ -75,9 +81,9 @@ int solveFordFulkerson(size_t n, vector<vector<int >> x, int s, int t)
     vector<bool> visited;
     visited.assign(n, 0);
 
-    while (findPath(n, rGraph, s, t, parent, visited))
+    while (FFdfs(n, rGraph, s, t, parent, visited))
     {
-        int path_flow = INT_MAX;
+        int path_flow = INF;
         for (v = t; v != s; v = parent[v])
         {
             u = parent[v];
@@ -100,7 +106,8 @@ int solveFordFulkerson(size_t n, vector<vector<int >> x, int s, int t)
     return max_flow;
 }
 
-bool bfsEK(vector<vector<int>>& x, int a, int b, vector<int>& parent)
+///BFS for Edmonds-Karp algo
+bool EKbfs(vector<vector<int>>& x, int a, int b, vector<int>& parent)
 {
     bool used[x.size()];
     for (int i = 0; i < x.size(); ++i)
@@ -127,12 +134,14 @@ bool bfsEK(vector<vector<int>>& x, int a, int b, vector<int>& parent)
     return (used[b]);
 }
 
+///Edmonds-Karp algorithm
+///Realization insipred by Cormen - Introduction to algorithms & Wikipedia - "Edmonds-Karp algorithm"
 int solveEdmondsKarp(size_t n, vector<vector<int>> x, int a, int b)
 {
     int all_flow = 0;
     vector<int> parent(n, -1);
     int max_flow = 0;
-    while (bfsEK(x, a, b, parent))
+    while (EKbfs(x, a, b, parent))
     {
         int path_flow = INT16_MAX;
         int u;
@@ -156,7 +165,8 @@ int solveEdmondsKarp(size_t n, vector<vector<int>> x, int a, int b)
     return max_flow;
 }
 
-bool bfs(vector<vector<int>>& x, int n, int a, int b, int* d, int* q, vector<vector<int>>& f)
+///BFS for Dinitz algo
+bool Dbfs(vector<vector<int>>& x, int n, int a, int b, int* d, int* q, vector<vector<int>>& f)
 {
     int qh = 0, qt = 0;
     q[qt++] = a;
@@ -175,14 +185,15 @@ bool bfs(vector<vector<int>>& x, int n, int a, int b, int* d, int* q, vector<vec
     return d[b] != -1;
 }
 
-int dfs(int v, int flow, int n, int b, int* ptr, int* d, vector<vector<int>>& x, vector<vector<int>>& f)
+///DFS for Dinitz algor
+int Ddfs(int v, int flow, int n, int b, int* ptr, int* d, vector<vector<int>>& x, vector<vector<int>>& f)
 {
     if (!flow) return 0;
     if (v == b) return flow;
     for (int& to = ptr[v]; to < n; ++to)
     {
         if (d[to] != d[v] + 1) continue;
-        int pushed = dfs(to, min(flow, x[v][to] - f[v][to]), n, b, ptr, d, x, f);
+        int pushed = Ddfs(to, min(flow, x[v][to] - f[v][to]), n, b, ptr, d, x, f);
         if (pushed)
         {
             f[v][to] += pushed;
@@ -193,6 +204,8 @@ int dfs(int v, int flow, int n, int b, int* ptr, int* d, vector<vector<int>>& x,
     return 0;
 }
 
+///Dinitz algorithm
+///Realization inspired by http://e-maxx.ru/algo/dinic
 int solveDinitz(size_t n, vector<vector<int>> x, int a, int b)
 {
     int ptr[n];
@@ -202,9 +215,9 @@ int solveDinitz(size_t n, vector<vector<int>> x, int a, int b)
     int flow = 0;
     for (;;)
     {
-        if (!bfs(x, n, a, b, d, q, f)) break;
+        if (!Dbfs(x, n, a, b, d, q, f)) break;
         memset(ptr, 0, n * sizeof ptr[0]);
-        while (int pushed = dfs(a, INF, n, b, ptr, d, x, f))
+        while (int pushed = Ddfs(a, INF, n, b, ptr, d, x, f))
             flow += pushed;
     }
     return flow;
@@ -227,7 +240,7 @@ int main()
 
     for (int i = 0; i < 40; ++i)
     {
-        //Запись в матрицу
+        ///Writing inputs to matrix
         ReadWriter rw(names[i]);
         vector<vector<int >> x;
         rw.read(x, names[i]);
@@ -259,7 +272,7 @@ int main()
             time[2] += workTimeD.count();
         }
         cout << names[i] << " RESULT: " << res[0] << " " << res[1] << " " << res[2]
-             << "\nTIME " << time[0]/10 << " " << time[1]/10 << " " << time[2]/10 << "\n";
+             << "\nTIME " << time[0] / 10 << " " << time[1] / 10 << " " << time[2] / 10 << "\n";
     }
     return 0;
 }

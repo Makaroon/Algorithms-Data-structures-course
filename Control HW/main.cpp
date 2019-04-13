@@ -253,18 +253,21 @@ int main()
 
         for (int j = 0; j < 10; ++j)
         {
+            ///Counting Ford-Fulkerson alg
             auto beginFF = std::chrono::steady_clock::now();
             res[0] = solveFordFulkerson(x.size(), x, firstPoint, lastPoint);
             auto endFF = std::chrono::steady_clock::now();
             auto workTimeFF = std::chrono::duration_cast<std::chrono::nanoseconds>(endFF - beginFF);
             time[0] += workTimeFF.count();
 
+            ///Counting Edmonds-Karp alg
             auto beginEK = std::chrono::steady_clock::now();
             res[1] = solveEdmondsKarp(x.size(), x, firstPoint, lastPoint);
             auto endEK = std::chrono::steady_clock::now();
             auto workTimeEK = std::chrono::duration_cast<std::chrono::nanoseconds>(endEK - beginEK);
             time[1] += workTimeEK.count();
 
+            ///Counting Dinitz alg
             auto beginD = std::chrono::steady_clock::now();
             res[2] = solveDinitz(x.size(), x, firstPoint, lastPoint);
             auto endD = std::chrono::steady_clock::now();

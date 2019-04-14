@@ -84,7 +84,7 @@ int solveFordFulkerson(size_t n, vector<vector<int >> x, vector<int> a, vector<i
         int max_flow = 0;
 
         vector<bool> visited;
-        visited.assign(n, 0);
+        visited.assign(n, false);
 
         while (FFdfs(n, rGraph, a[k], b[k], parent, visited))
         {

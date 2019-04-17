@@ -17,20 +17,19 @@ void getSubstrings(string& source, string& substring, vector<int>& res)
     if(k == 0)
         return;
 
-    // считаем размеры граней, если встретилась подстрока добавляем ее индекс в out
-    int* pi = new int[n];
-    pi[0] = 0;
+    int* pref = new int[n];
+    pref[0] = 0;
     for(int i = 1; i < n; ++i)
     {
-        int j = pi[i - 1];
+        int j = pref[i - 1];
         while(j > 0 && s[i] != s[j])
-            j = pi[j - 1];
-        pi[i] = s[i] == s[j] ? ++j : j;
+            j = pref[j - 1];
+        pref[i] = s[i] == s[j] ? ++j : j;
         if(j == k)
             res.push_back(static_cast<int&&>(i - 2 * k));
     }
 
-    delete[] pi;
+    delete[] pref;
 }
 
 //Не изменять метод main без крайней необходимости

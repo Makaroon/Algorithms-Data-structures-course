@@ -6,45 +6,45 @@
 
 using namespace std;
 
-int* prefixFunction(string s, int n)
+///Function to count prefixes
+vector<int> prefixFunction(string& s, int n, vector<int>& pref)
 {
-    int* pref = new int[n];
-    pref[0] = 0;
-    int j;
+    int j = 0;
     for (int i = 1; i < n; ++i)
     {
-        j = pref[i - 1];
         while (j > 0 && s[i] != s[j])
             j = pref[j - 1];
-        pref[i] = s[i] == s[j] ? ++j : j;
+        if (s[i] == s[j]) ++j;
+        pref[i] = j;
     }
+
     return pref;
 }
 
 //Основная задача - реализовать данный метод
 //Можно изменить передачу параметров на ссылки (&)
 //Можно добавлять любое количество любых вспомогательных методов, структур и классов
+
+///Inspired by Cormen - Introduction to algorithms
 void getSubstrings(string& source, string& substring, vector<int>& res)
 {
-    int n = source.length(), k = substring.length(), q = 0;
-    if (k == 0)
-        return;
-    int* pref = prefixFunction(source, n);
-
+    int n = (int) source.length(), k = (int) substring.length(), q = 0;
+    vector<int> pref(k);
+    prefixFunction(substring, k, pref);
     for (int i = 0; i < n; ++i)
     {
         while (q > 0 && substring[q] != source[i])
             q = pref[q - 1];
         if (substring[q] == source[i])
-            ++q;
+            q++;
         if (q == k)
         {
-            q = pref[q - 1];
             res.push_back(i - k + 1);
+            q = pref[q - 1];
         }
     }
 
-    delete[] pref;
+    pref.clear();
 }
 
 //Не изменять метод main без крайней необходимости

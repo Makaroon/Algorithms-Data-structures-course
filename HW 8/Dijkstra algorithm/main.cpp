@@ -8,9 +8,9 @@ using namespace std;
 ///relaxation
 void relax(vector<int>& d, vector<int>& p, int v, int u, int path)
 {
-    if (d[v] > d[u]+ path)
+    if (d[v] > d[u] + path)
     {
-        d[v] = d[u]+ path;
+        d[v] = d[u] + path;
         p[v] = u;
     }
 }
@@ -18,10 +18,10 @@ void relax(vector<int>& d, vector<int>& p, int v, int u, int path)
 ///check if we entered all vertices
 bool allUsed(vector<bool>& used)
 {
-    bool flag=true;
-    for(bool b : used)
+    bool flag = true;
+    for (bool b : used)
         if (!b)
-            flag=false;
+            flag = false;
     return flag;
 }
 
@@ -29,11 +29,11 @@ bool allUsed(vector<bool>& used)
 ///returning index of the vertex
 int findMin(vector<int>& d, vector<bool>& used, int N)
 {
-    int min=30001;
-    int num=-1;
+    int min = 30001;
+    int num = -1;
     for (int i = 0; i < N; ++i)
         if (!used[i])
-            if(d[i]<min)
+            if (d[i] < min)
             {
                 num = i;
                 min = d[i];
@@ -50,19 +50,19 @@ int findMin(vector<int>& d, vector<bool>& used, int N)
 void solve(int N, int M, vector<Edge>& edges, vector<int>& result)
 {
     ///initialization
-    vector<int> d(N,30001);
-    vector<int> p(N,-1);
-    vector<bool> used(N,false);
+    vector<int> d(N, 30001);
+    vector<int> p(N, -1);
+    vector<bool> used(N, false);
     d[0] = 0;
 
     ///Dijkstra alg
-    while(!allUsed(used))
+    while (!allUsed(used))
     {
-        int minVert = findMin(d,used,N);
-        used[minVert]=true;
-        for (int i=0;i<M;++i)
-            if (edges[i].A==minVert)
-                relax(d,p,edges[i].B,edges[i].A,edges[i].W);
+        int minVert = findMin(d, used, N);
+        used[minVert] = true;
+        for (int i = 0; i < M; ++i)
+            if (edges[i].A == minVert)
+                relax(d, p, edges[i].B, edges[i].A, edges[i].W);
     }
 
     ///writing to result vector

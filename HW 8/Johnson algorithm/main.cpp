@@ -51,24 +51,27 @@ int findMin(vector<int>& d, vector<bool>& used, int N)
     return num;
 }
 
-void algBF(int N, int M, vector<Edge>& edges, vector<int>& result)
+void algBF(int N, int M, vector <Edge>& edges, vector<int>& result)
 {
     vector<int> d(N);
     vector<int> p(N);
     for (int i = 0; i < N; ++i)
     {
-        d[i] = 30001;
+        d[i] = 130001;
         p[i] = -1;
     }
-    d[0] = 0;
+    d[N - 1] = 0;
 
     //Bellman-Ford
     for (int i = 0; i < N - 1; ++i)
         for (int j = 0; j < M; ++j)
             relax(d, p, edges[j].B, edges[j].A, edges[j].W);
 
-    for (int i = 1; i < N; ++i)
+    for (int i = 0; i < N; ++i)
         result.push_back(d[i]);
+
+    d.clear();
+    p.clear();
 }
 
 //Основной метод решения задачи, параметры:
@@ -76,35 +79,35 @@ void algBF(int N, int M, vector<Edge>& edges, vector<int>& result)
 //edges - вектор ориентированных ребер, каждое ребро представлено 3-мя числами (А, В, W),
 // где A и B - номера вершин, которые оно соединяет (Путь строго из А в В), и W - вес ребра
 //передается по ссылке (&), чтобы не копировать, изменять вектор и его значения можно.
-void solve(int N, int M, vector<Edge>& edges, vector<vector<int>>& result)
+void solve(int N, int M, vector <Edge>& edges, vector <vector<int>>& result)
 {
     ///initialization
-    vector<vector<int>> D(N, vector<int>(N));
+    vector <vector<int>> D(N, vector<int>(N));
 
 
     for (int i = 0; i < N; ++i)
     {
         Edge e;
-        e.A=N;
-        e.B=i;
-        e.W=0;
-        e.number=edges.size();
+        e.A = N;
+        e.B = i;
+        e.W = 0;
+        e.number = static_cast<int>(edges.size());
         edges.push_back(e);
     }
 
     vector<int> h;
     ///..
-    algBF(N, static_cast<int>(edges.size()), edges, h);
+    algBF(N + 1, static_cast<int>(edges.size()), edges, h);
 
     for (int i = 0; i < edges.size(); ++i)
-        edges[i].W+=h[edges[i].A]-h[edges[i].B];
+        edges[i].W += h[edges[i].A] - h[edges[i].B];
 
-    for(int i=0;i<N+1;++i)
+    for (int i = 0; i < N + 1; ++i)
     {
-        vector<vector<int>> s;
+        vector <vector<int>> s;
         ///..
-        for(int j=0;j<N+1;++j)
-            D[i][j]=s[i][j]+h[j]-h[i];
+        for (int j = 0; j < N + 1; ++j)
+            D[i][j] = s[i][j] + h[j] - h[i];
     }
 
 }
@@ -119,11 +122,11 @@ int main()
 
     //Вектор ребер, каждое ребро представлено 3-мя числами (А, В, W), где A и B - номера вершин, которые оно соединяет, и W - вес ребра
     //Основной структурой выбран вектор, так как из него проще добавлять и удалять элементы (а такие операции могут понадобиться).
-    vector<Edge> edges;
+    vector <Edge> edges;
     rw.readEgdes(M, edges);
 
     //Основной структурой для ответа выбран вектор, так как в него проще добавлять новые элементы.
-    vector<vector<int>> result;
+    vector <vector<int>> result;
 
     //Алгоритм решения задачи
     solve(N, M, edges, result);

@@ -37,6 +37,7 @@ int Wagner_Fischer_for_Damerau_Levenshtein(string& s, string& t)
     return d[n][m];
 }
 
+
 //Не изменять метод main без крайней необходимости
 //ОБЯЗАТЕЛЬНО добавить в комментариях подробные пояснения и причины побудившие вас изменить код этого метода.
 int main(int argc, const char* argv[])

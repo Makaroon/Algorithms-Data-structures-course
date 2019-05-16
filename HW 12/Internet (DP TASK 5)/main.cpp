@@ -1,26 +1,52 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <cmath>
 
 
 using namespace std;
 
+int getMinIndex(vector<float> c)
+{
+    int min = 10000000;
+    int index = -1;
+    for (int i = 0; i < c.size(); ++i)
+        if (c[i] < min)
+        {
+            min = c[i];
+            index = i;
+        }
+    return index;
+}
+
+int getMax(vector<float> c)
+{
+    int max = -1;
+    int index = -1;
+    for (int i = 0; i < c.size(); ++i)
+        if (c[i] > max)
+        {
+            max = c[i];
+            index = i;
+        }
+    return max;
+}
 
 int countMinSum(int seconds, vector<int>& values)
 {
-    for (int i = 1; i < values.size(); ++i)
-    {
-        if (values[i] < values[i - 1] * 2)
-            values[i] = values[i - 1] * 2;
-    }
+    vector<float> c;
     int count = 0;
-    for (int i = 30; i >= 0; --i)
+    for (int i = 0; i < values.size(); ++i)
     {
-        if (seconds >= values[i])
-        {
-            seconds -= values[i];
-            count += count << i;
-        }
+        c.push_back(pow(2, i) / values[i]);
+    }
+
+    while (seconds > 0)
+    {
+        seconds -= (values[getMinIndex(c)]);
+        count += pow(2, getMinIndex(c));
+        if (seconds - values[getMinIndex(c)] < 0)
+            c[getMinIndex(c)] += getMax(c);
     }
     return count;
 }

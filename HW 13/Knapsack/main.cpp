@@ -12,10 +12,32 @@ using namespace std;
 //param res - вектор результатов (предметы, которые надо взять)
 void solve(int N, int W, pair<int, int>* items, vector<pair<int, int>>& res)
 {
-    
+    int a[N + 1][W + 1];
+
+    for (int i = 0; i <= W; ++i)
+        a[0][i] = 0;
+
+    for (int i = 0; i <= N; ++i)
+        a[i][0] = 0;
+
+    for (int i = 1; i <= N; ++i)
+        for (int j = 1; j <= W; ++j)
+        {
+            int k = j - items[i - 1].first;
+            if (k >= 0)
+                a[i][j] = max(a[i - 1][k] + items[i - 1].second, a[i - 1][j]);
+            else a[i][j] = a[i - 1][j];
+        }
+
+    for (int i = N, j = W; a[i][j] > 0; --i)
+        if (a[i][j] != a[i - 1][j])
+        {
+            res.emplace_back(items[i - 1]);
+            j -= items[i - 1].first;
+        }
 }
 
-int main(int argc, const char * argv[])
+int main(int argc, const char* argv[])
 {
     ReadWriter rw;
     int N = rw.readInt(); //количество предметов

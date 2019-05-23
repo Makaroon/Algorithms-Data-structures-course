@@ -10,9 +10,29 @@ using namespace std;
 //param W - ограничения на вес рюкзака
 //param items - массив размера N, с предметами - first = вес, second = стоимость
 //param res - вектор результатов (предметы, которые надо взять)
-void solve(int N, int W, pair<int, int>* items, vector<pair<int, int>>& res)
+
+bool compItem(const pair<int, int>& right, const pair<int, int>& left)
 {
-	
+    if((double)right.second / right.first == (double)left.second / left.first)
+        return right.first > left.first;
+    else return (double)right.second / right.first > (double)left.second / left.first;
+}
+
+void solve(int N, int W, pair<int, int> *items, vector<pair<int, int>> &res)
+{
+    sort(items, items + N, compItem);
+
+    int i = 0, w = W;
+
+    do
+    {
+        if(items[i].first <= w)
+        {
+            w -= items[i].first;
+            res.push_back(items[i]);
+        }
+    }
+    while(++i < N);
 }
 
 int main(int argc, const char * argv[])

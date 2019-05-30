@@ -8,16 +8,16 @@
 
 using namespace std;
 
-void nextPermutation(int* p, int n)
+void nextPermutation(int* a, int n)
 {
     int i = n - 1, j = n - 1;
-    while (i > 0 && p[i] < p[i - 1])
+    while (i > 0 && a[i] < a[i - 1])
         --i;
-    while (p[j] < p[i - 1])
+    while (a[j] < a[i - 1])
         --j;
-    swap(p[i - 1], p[j]);
+    swap(a[i - 1], a[j]);
     for (int k = 0; k < (n - i + 1) / 2; ++k)
-        swap(p[i + k], p[n - k - 1]);
+        swap(a[i + k], a[n - k - 1]);
 }
 
 //Необходимо реализовать данный метод

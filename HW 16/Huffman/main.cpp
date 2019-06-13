@@ -23,10 +23,10 @@ class Huffman
             this->id = id;
         }
 
-        Element& concat(const Element& obj, int id)
+        Element& concat(const Element& obj, int _id)
         {
             this->value += obj.value;
-            this->id = id;
+            this->id = _id;
             indexes.insert(indexes.end(), obj.indexes.begin(), obj.indexes.end());
 
             return *this;
@@ -63,7 +63,7 @@ public:
             _pq.pop();
 
             //записываем код для символа
-            vector<int>::iterator it = a.indexes.begin();
+            auto it = a.indexes.begin();
             for (; it != a.indexes.end(); ++it)
                 _codes[*it] = '0' + _codes[*it];
 
